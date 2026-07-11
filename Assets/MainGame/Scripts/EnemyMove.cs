@@ -26,6 +26,16 @@ public class EnemyMove : MonoBehaviour
     Vector2 moveVector;
 
     private GameObject playerRef;
+    
+    
+    // enemy hurt
+
+    public float maxHealth;
+
+    public float health;
+    
+    
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +43,7 @@ public class EnemyMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
         targetTransform = playerRef.transform;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -84,9 +95,20 @@ public class EnemyMove : MonoBehaviour
             Debug.Log("hi");
             state = EnemyState.Knockback;
             knockbackTimer = knockbackTime;
-            
+            Hurt(other.GetComponent<DamageValue>().getDamageValue());
         }
 
-        playerRef.GetComponent<move>().Knockback(transform);
+        //playerRef.GetComponent<move>().Knockback(transform);
+    }
+    
+    // hurt
+
+    public void Hurt(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

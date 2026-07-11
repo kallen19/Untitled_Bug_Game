@@ -22,7 +22,7 @@ public class move : MonoBehaviour
     public Vector3 knockbackDirection;
     public float knockbackMaxTime = 1f;
     private float knockbackTimeLeft;
-    public float knockbackSpeed = 100f;
+    public float knockbackSpeed = 25f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,8 +49,6 @@ public class move : MonoBehaviour
                 }
                 break;
         }
-        
-
     }
 
     public void Knockback(Transform awayFrom)
@@ -59,5 +57,14 @@ public class move : MonoBehaviour
         state = PlayerState.Knockback;
         knockbackTimeLeft = knockbackMaxTime;
         rb.linearVelocity = knockbackDirection;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("ouch");
+            Knockback(other.transform);
+        }
     }
 }
