@@ -43,5 +43,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2272672123
+    locked: 0
+  - name: Vegetation
+    uniqueID: 3093084755
+    locked: 0
+  - name: Vegetation (1)
+    uniqueID: 3429446869
+    locked: 0
+  - name: Character
+    uniqueID: 681975809
+    locked: 0
   m_RenderingLayers:
   - Default
