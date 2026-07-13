@@ -7146,8 +7146,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1751281067}
-  - component: {fileID: 1751281068}
   - component: {fileID: 1751281069}
+  - component: {fileID: 1751281068}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7185,6 +7185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_Controller
   _moveSpeed: 50
   _rb: {fileID: 1751281069}
+  _animator: {fileID: 1200560349}
+  _spriteRenderer: {fileID: 1200560348}
 --- !u!50 &1751281069
 Rigidbody2D:
   serializedVersion: 5
