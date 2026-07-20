@@ -1,13 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum PlayerState
-{
-    InControl,
-    Knockback
-}
 
-public class move : MonoBehaviour
+public class MoveRB : MonoBehaviour
 {
     private InputAction moveAction;
 
@@ -34,22 +29,22 @@ public class move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         switch (state)
         {
             case PlayerState.InControl:
                 moveVector = moveAction.ReadValue<Vector2>();
-                rb.linearVelocity = speedUnitsPerSec * Time.deltaTime * moveVector;
+                rb.linearVelocity = speedUnitsPerSec * moveVector;
                 break;
             case PlayerState.Knockback:
-                transform.Translate(knockbackSpeed * Time.deltaTime * knockbackDirection);
+                rb.linearVelocity = knockbackSpeed * knockbackDirection;
 
                 // faux friction
 
                 knockbackSpeed *= knockbackFallOffRatio;
 
-                knockbackTimeLeft -= Time.fixedDeltaTime;
+                knockbackTimeLeft -= Time.deltaTime;
                 if (knockbackTimeLeft <= 0)
                 {
                     state = PlayerState.InControl;
@@ -61,9 +56,9 @@ public class move : MonoBehaviour
     public void Knockback(Transform awayFrom)
     {
         knockbackDirection = transform.position - awayFrom.position;
+        knockbackDirection.Normalize();
         state = PlayerState.Knockback;
         knockbackTimeLeft = knockbackMaxTime;
-        rb.linearVelocity = knockbackDirection;
         knockbackSpeed = knockbackMaxSpeed;
     }
     
