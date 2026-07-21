@@ -4,7 +4,8 @@ using UnityEngine;
 public enum EnemyState
 {
     Following,
-    Knockback
+    Knockback,
+    Sleeping
 }
 
 public class EnemyMove : MonoBehaviour
@@ -30,6 +31,8 @@ public class EnemyMove : MonoBehaviour
     Vector2 moveVector;
 
     private GameObject playerRef;
+
+    public float wakeUpDistance;
     
     
     // enemy hurt
@@ -49,6 +52,7 @@ public class EnemyMove : MonoBehaviour
         playerRef = GameObject.FindGameObjectWithTag("Player");
         targetTransform = playerRef.transform;
         health = maxHealth;
+        state = EnemyState.Sleeping;
     }
 
     // Update is called once per frame
@@ -59,7 +63,15 @@ public class EnemyMove : MonoBehaviour
         switch (state)
         {
             case EnemyState.Following:
-                rb.linearVelocity = moveVector * speedUnitsPerSec;
+                if(!PlayerNear())
+                {
+                    state = EnemyState.Sleeping;
+                    
+                } else
+                {
+                                    rb.linearVelocity = moveVector * speedUnitsPerSec;
+
+                }
                 break;
             case EnemyState.Knockback:
                 Vector3 awayVector = (transform.position - targetTransform.position);
@@ -77,6 +89,12 @@ public class EnemyMove : MonoBehaviour
                     state = EnemyState.Following;
                 }
 
+                break;
+            case EnemyState.Sleeping:
+                if(PlayerNear())
+                {
+                    state = EnemyState.Following;
+                }
                 break;
         }
         //transform.Translate(moveVector.x * speedUnitsPerSec * Time.fixedDeltaTime, moveVector.y * speedUnitsPerSec * Time.fixedDeltaTime, 0);
@@ -119,5 +137,10 @@ public class EnemyMove : MonoBehaviour
             gameObject.SetActive(false);
             enemyManager.EnemyDeath.Invoke();
         }
+    }
+
+    private bool PlayerNear()
+    {
+        return Vector3.Distance(transform.position, playerRef.transform.position) < wakeUpDistance;    
     }
 }
