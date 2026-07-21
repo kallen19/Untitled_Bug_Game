@@ -9,17 +9,21 @@ public enum EnemyState
 
 public class EnemyMove : MonoBehaviour
 {
-   
+    public EnemyManager enemyManager;
 
     public EnemyState state = EnemyState.Following;
     
     public float speedUnitsPerSec = 0;
     public Transform targetTransform;
 
-    public float knockbackAmount = 2;
+    public float knockbackAmountMax = 2;
 
     public float knockbackTime = 0.5f;
     private float knockbackTimer = 0;
+
+    private float knockbackAmountReal;
+
+    public float knockbackFalloffRatio = 0.95f;
     
     public Rigidbody2D rb;
     
@@ -40,6 +44,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
         targetTransform = playerRef.transform;
@@ -54,14 +59,16 @@ public class EnemyMove : MonoBehaviour
         switch (state)
         {
             case EnemyState.Following:
-                rb.linearVelocity =  moveVector * speedUnitsPerSec;
+                rb.linearVelocity = moveVector * speedUnitsPerSec;
                 break;
             case EnemyState.Knockback:
                 Vector3 awayVector = (transform.position - targetTransform.position);
                 awayVector.Normalize();
                 //rb.AddForce(awayVector * knockbackAmount, ForceMode2D.Impulse);
-                rb.linearVelocity = awayVector * knockbackAmount;
+                rb.linearVelocity = awayVector * knockbackAmountReal;
                 
+                // faux friction
+                knockbackAmountReal *= knockbackFalloffRatio;
                 
                 knockbackTimer -= Time.deltaTime;
                 if (knockbackTimer <= 0)
@@ -92,9 +99,10 @@ public class EnemyMove : MonoBehaviour
     {
         if (other.CompareTag("PlayerAttack"))
         {
-            Debug.Log("hi");
+            Debug.Log("i hit the enemy");
             state = EnemyState.Knockback;
             knockbackTimer = knockbackTime;
+            knockbackAmountReal = knockbackAmountMax;
             Hurt(other.GetComponent<DamageValue>().getDamageValue());
         }
 
@@ -109,6 +117,7 @@ public class EnemyMove : MonoBehaviour
         if(health <= 0)
         {
             gameObject.SetActive(false);
+            enemyManager.EnemyDeath.Invoke();
         }
     }
 }

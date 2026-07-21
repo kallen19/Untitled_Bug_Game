@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,8 +27,24 @@ private Vector2 _moveDir = Vector2.zero;
 private Directions _facingDirection = Directions.RIGHT;
 private readonly int _animMoveRight = Animator.StringToHash("Walking_Right");
 private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
-
     #endregion
+
+    #region Jaden Adds Stuff
+     
+    public PlayerState state;
+    public Vector3 knockbackDirection;
+    public float knockbackMaxTime = 1f;
+    private float knockbackTimeLeft;
+    public float knockbackMaxSpeed = 50f;
+    private float knockbackSpeed;
+    public float knockbackFallOffRatio = 0.95f;
+    #endregion
+
+    
+    private void Start()
+    {
+        state = PlayerState.InControl;
+    }
 
     #region Tick
     private void Update()
@@ -37,9 +54,28 @@ private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
        UpdateAnimation(); 
     }
 
+
     private void FixedUpdate() //Fixed means anything with the physical system
     {
-        MovementUpdate();
+        switch (state)
+        {
+            case PlayerState.InControl:
+                MovementUpdate();
+                break;
+            case PlayerState.Knockback:
+                transform.Translate(knockbackSpeed * Time.deltaTime * knockbackDirection);
+
+                // faux friction
+
+                knockbackSpeed *= knockbackFallOffRatio;
+
+                knockbackTimeLeft -= Time.fixedDeltaTime;
+                if (knockbackTimeLeft <= 0)
+                {
+                    state = PlayerState.InControl;
+                }
+                break;
+        }
     }
 
     #endregion
@@ -56,7 +92,8 @@ private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
     #region Movement Logic
     private void MovementUpdate()
     {
-        _rb.velocity = _moveDir.normalized * _moveSpeed * Time.fixedDeltaTime; //normalized helps to stop the player from moving faster in the diagonial direction
+        // removed time delta time because pretty sure lowkey we don't need it and the number makse more sense to me
+        _rb.linearVelocity = _moveDir.normalized * _moveSpeed; //normalized helps to stop the player from moving faster in the diagonial direction
     }
     #endregion
 
@@ -98,5 +135,27 @@ private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
             _animator.CrossFade(_animIdeleRight, 0);
         }
     }
+    #endregion
+
+    #region take damage and get knockbacked
+
+    public void Knockback(Transform awayFrom)
+    {
+        knockbackDirection = transform.position - awayFrom.position;
+        state = PlayerState.Knockback;
+        knockbackTimeLeft = knockbackMaxTime;
+        _rb.linearVelocity = knockbackDirection;
+        knockbackSpeed = knockbackMaxSpeed;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("ouch");
+            Knockback(other.transform);
+        }
+    }
+
     #endregion
 } 

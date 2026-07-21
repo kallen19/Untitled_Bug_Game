@@ -15,12 +15,13 @@ public class Attack : MonoBehaviour
     {
         attackAction = InputSystem.actions.FindAction("Attack");
         hurtbox = GameObject.Find("MantisHurtbox");
+        hurtbox.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attackAction.IsPressed())
+        if (attackAction.WasPerformedThisFrame())
         {
             DoAttack();
         }
