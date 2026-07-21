@@ -25,12 +25,17 @@ private enum Directions {UP, DOWN, LEFT, RIGHT}
 #region Internal Data
 private Vector2 _moveDir = Vector2.zero;
 private Directions _facingDirection = Directions.RIGHT;
+
 private readonly int _animMoveRight = Animator.StringToHash("Walking_Right");
 private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
+private readonly int _animMoveUp = Animator.StringToHash("Walking_Up");
+private readonly int _animIdeleUp = Animator.StringToHash("idle-Up");
+private readonly int _animMoveDown = Animator.StringToHash("Walking_Down");
+private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     #endregion
 
     #region Jaden Adds Stuff
-     
+
     public PlayerState state;
     public Vector3 knockbackDirection;
     public float knockbackMaxTime = 1f;
@@ -112,7 +117,20 @@ private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
             }
 
         }
-    
+
+        else if (_moveDir.y != 0)
+        {
+            if (_moveDir.y > 0) //Moving Up
+            {
+                _facingDirection = Directions.UP;
+            }
+            else if (_moveDir.y < 0) //Moving Left
+            {
+                _facingDirection = Directions.DOWN;
+            }
+
+        }
+
     }
 
     private void UpdateAnimation()
@@ -126,14 +144,23 @@ private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
             _spriteRenderer.flipX = false;
         }
 
-        if(_moveDir.SqrMagnitude() > 0) //We're moving
+        var isMoving = _moveDir.SqrMagnitude() > 0;
+        var animation = _animMoveRight;
+
+        switch (_facingDirection)
         {
-            _animator.CrossFade(_animMoveRight, 0);
+            case Directions.UP:
+                animation = isMoving ? _animMoveUp : _animIdeleUp;
+                break;
+            case Directions.DOWN:
+                animation = isMoving ? _animMoveDown : _animIdeleDown;
+                break;
+            case Directions.LEFT:
+            case Directions.RIGHT:
+                animation = isMoving ? _animMoveRight : _animIdeleRight; 
+                break;
         }
-        else
-        {
-            _animator.CrossFade(_animIdeleRight, 0);
-        }
+        _animator.CrossFade(animation, 0);
     }
     #endregion
 
