@@ -294,6 +294,7 @@ MonoBehaviour:
   knockbackTime: 0.5
   knockbackFalloffRatio: 0.95
   rb: {fileID: 349243348}
+  wakeUpDistance: 0
   maxHealth: 5
   health: 0
 --- !u!212 &349243350
@@ -483,6 +484,7 @@ MonoBehaviour:
   knockbackTime: 0.5
   knockbackFalloffRatio: 0.95
   rb: {fileID: 396246400}
+  wakeUpDistance: 0
   maxHealth: 5
   health: 0
 --- !u!212 &396246402
@@ -4855,6 +4857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884767052}
+  - component: {fileID: 884767055}
   - component: {fileID: 884767054}
   - component: {fileID: 884767053}
   m_Layer: 0
@@ -4896,7 +4899,7 @@ Camera:
   m_GameObject: {fileID: 884767051}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4938,6 +4941,26 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &884767055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884767051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.PixelPerfect::UnityEngine.U2D.PixelPerfectCamera
+  m_AssetsPPU: 64
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 0
+  m_PixelSnapping: 1
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &915490434
 GameObject:
   m_ObjectHideFlags: 0
@@ -9831,6 +9854,7 @@ MonoBehaviour:
   knockbackTime: 0.5
   knockbackFalloffRatio: 0.95
   rb: {fileID: 2083912407}
+  wakeUpDistance: 0
   maxHealth: 5
   health: 0
 --- !u!212 &2083912409
