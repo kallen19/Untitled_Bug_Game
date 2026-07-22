@@ -138,6 +138,10 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
 
     }
 
+    public int GetDirection() {
+	return (int)_facingDirection;
+    }
+
     private void UpdateAnimation()
     {
         if(_facingDirection == Directions.LEFT)

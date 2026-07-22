@@ -3,13 +3,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
+
+
 public class Attack : MonoBehaviour
 {
+    private enum Directions {UP, DOWN, LEFT, RIGHT}
     
     private InputAction attackAction;
     
     private GameObject hurtbox;
     public bool isAttacking;
+    [SerializeField] Player_Controller _pc;
+    [SerializeField] float attackReach = 0.15f;
 
 // LENGTH OF TIME ATTACK IS OUT, IN SECONDS
 public float attackDurationSeconds;  
@@ -35,7 +40,7 @@ public float attackDurationSeconds;
 
     void DoAttack()
     {
-        Vector3 attackPosition = FindAttackPos();
+        Vector3 attackPosition = AltFindAttackPos();
         StartCoroutine(SpawnHurtbox(attackPosition));
     }
 
@@ -45,6 +50,33 @@ public float attackDurationSeconds;
         Vector3 mouseToPlayerDist = mousePos - transform.position;
         Vector3 restrainedAttackPos = transform.position + (mouseToPlayerDist.normalized / 2f);
         return new Vector3(restrainedAttackPos.x, restrainedAttackPos.y, 0f);
+    }
+
+    Vector3 AltFindAttackPos()
+    {
+        Directions dir = (Directions)_pc.GetDirection();
+	Vector3 attackPosDelt;
+
+	switch (dir)
+	{
+	    case Directions.UP:
+	        attackPosDelt = new Vector3(0f,attackReach,0f);
+		break;
+	    case Directions.DOWN:
+	        attackPosDelt = new Vector3(0f,-attackReach,0f);
+		break;
+	    case Directions.RIGHT:
+	        attackPosDelt = new Vector3(attackReach,0f,0f);
+		break;
+	    case Directions.LEFT:
+	        attackPosDelt = new Vector3(-attackReach,0f,0f);
+		break;
+	    default:
+	        attackPosDelt = new Vector3(0f,0f,0f);
+		break;
+	}
+
+	return transform.position + attackPosDelt;
     }
 
     IEnumerator SpawnHurtbox(Vector3 attackPosition)
