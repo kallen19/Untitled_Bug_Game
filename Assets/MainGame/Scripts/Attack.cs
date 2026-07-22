@@ -9,13 +9,15 @@ public class Attack : MonoBehaviour
     private InputAction attackAction;
     
     private GameObject hurtbox;
-    
+    public bool isAttacking;
+
 // LENGTH OF TIME ATTACK IS OUT, IN SECONDS
 public float attackDurationSeconds;  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        isAttacking = false;
         attackAction = InputSystem.actions.FindAction("Attack");
         hurtbox = GameObject.Find("MantisHurtbox");
         hurtbox.SetActive(false);
@@ -62,9 +64,10 @@ public float attackDurationSeconds;
         hurtbox.transform.position = attackPosition;
         hurtbox.transform.rotation = AngleFromVectorDiff(attackPosition, transform.position);
         hurtbox.SetActive(true);
+	isAttacking = true;
         yield return new WaitForSeconds(attackDurationSeconds);
         hurtbox.SetActive(false);
-
+	isAttacking = false;
         // END ANIMATION (??? i don't know how animations work)
         
     }

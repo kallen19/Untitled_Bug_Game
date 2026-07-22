@@ -8453,6 +8453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_Controller
   _moveSpeed: 1.5
   _rb: {fileID: 1751281069}
+  _attackHandler: {fileID: 1751281071}
   _animator: {fileID: 1200560349}
   _spriteRenderer: {fileID: 1200560348}
   state: 0
@@ -8545,6 +8546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704166caf5962e045bd3ef5e788fe3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attack
+  isAttacking: 0
+  attackDurationSeconds: 0.2
 --- !u!1 &1768538704
 GameObject:
   m_ObjectHideFlags: 0
