@@ -49,6 +49,9 @@ TagManager:
   - name: Shadows
     uniqueID: 4267151483
     locked: 0
+  - name: Buildings
+    uniqueID: 641319287
+    locked: 0
   - name: Vegetation
     uniqueID: 3093084755
     locked: 0
