@@ -10,6 +10,9 @@ public class Attack : MonoBehaviour
     
     private GameObject hurtbox;
     
+// LENGTH OF TIME ATTACK IS OUT, IN SECONDS
+public float attackDurationSeconds;  
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,12 +47,25 @@ public class Attack : MonoBehaviour
 
     IEnumerator SpawnHurtbox(Vector3 attackPosition)
     {
-        
+        // animation
+
+        if(attackPosition.x > transform.position.x)
+        {
+            // ATTACK LEFT
+        }
+        else
+        {
+            // ATTACK RIGHT
+        }
+
+
         hurtbox.transform.position = attackPosition;
         hurtbox.transform.rotation = AngleFromVectorDiff(attackPosition, transform.position);
         hurtbox.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(attackDurationSeconds);
         hurtbox.SetActive(false);
+
+        // END ANIMATION (??? i don't know how animations work)
         
     }
 
