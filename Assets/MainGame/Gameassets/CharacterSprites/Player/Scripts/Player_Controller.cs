@@ -18,6 +18,8 @@ private enum Directions {UP, DOWN, LEFT, RIGHT}
  [Header("Dependencies")]
  [SerializeField] Rigidbody2D _rb;
 
+ [SerializeField] Attack _attackHandler;
+
 [SerializeField] Animator _animator;
 [SerializeField] SpriteRenderer _spriteRenderer;
 #endregion
@@ -27,10 +29,13 @@ private Vector2 _moveDir = Vector2.zero;
 private Directions _facingDirection = Directions.RIGHT;
 
 private readonly int _animMoveRight = Animator.StringToHash("Walking_Right");
+private readonly int _animAttackRight = Animator.StringToHash("Attack_RIGHT");
 private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
 private readonly int _animMoveUp = Animator.StringToHash("Walking_Up");
+private readonly int _animAttackUp = Animator.StringToHash("Attack_UP");
 private readonly int _animIdeleUp = Animator.StringToHash("idle-Up");
 private readonly int _animMoveDown = Animator.StringToHash("Walking_Down");
+private readonly int _animAttackDown = Animator.StringToHash("Attack_Down");
 private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     #endregion
 
@@ -133,6 +138,10 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
 
     }
 
+    public int GetDirection() {
+	return (int)_facingDirection;
+    }
+
     private void UpdateAnimation()
     {
         if(_facingDirection == Directions.LEFT)
@@ -144,20 +153,21 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
             _spriteRenderer.flipX = false;
         }
 
+	var isAttacking = _attackHandler.isAttacking;
         var isMoving = _moveDir.SqrMagnitude() > 0;
         var animation = _animMoveRight;
 
         switch (_facingDirection)
         {
             case Directions.UP:
-                animation = isMoving ? _animMoveUp : _animIdeleUp;
+                animation = isAttacking ? _animAttackUp : (isMoving ? _animMoveUp : _animIdeleUp);
                 break;
             case Directions.DOWN:
-                animation = isMoving ? _animMoveDown : _animIdeleDown;
+                animation = isAttacking ? _animAttackDown : (isMoving ? _animMoveDown : _animIdeleDown);
                 break;
             case Directions.LEFT:
             case Directions.RIGHT:
-                animation = isMoving ? _animMoveRight : _animIdeleRight; 
+                animation = isAttacking ? _animAttackRight : (isMoving ? _animMoveRight : _animIdeleRight); 
                 break;
         }
         _animator.CrossFade(animation, 0);
