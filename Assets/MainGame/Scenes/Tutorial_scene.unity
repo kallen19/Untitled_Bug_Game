@@ -5590,7 +5590,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567363305}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -8546,8 +8546,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704166caf5962e045bd3ef5e788fe3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attack
-  isAttacking: 0
-  attackDurationSeconds: 0.2
+  isAttacking: 1
+  _pc: {fileID: 1751281068}
+  attackReach: 0.2
+  attackDurationSeconds: 1
 --- !u!1 &1768538704
 GameObject:
   m_ObjectHideFlags: 0
