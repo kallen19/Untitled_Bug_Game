@@ -153,7 +153,7 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
             _spriteRenderer.flipX = false;
         }
 
-	var isAttacking = _attackHandler.isAttacking;
+    	var isAttacking = _attackHandler.isAttacking;
         var isMoving = _moveDir.SqrMagnitude() > 0;
         var animation = _animMoveRight;
 
