@@ -26905,7 +26905,7 @@ Transform:
   m_GameObject: {fileID: 1174051838}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.500057, y: 0.21999705, z: -10}
+  m_LocalPosition: {x: -9.684769, y: 0.21999705, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27001,6 +27001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748883818}
   - component: {fileID: 1748883817}
+  - component: {fileID: 1748883819}
   m_Layer: 0
   m_Name: Shop Signage
   m_TagString: Untagged
@@ -27053,8 +27054,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 681975809
-  m_SortingLayer: 5
+  m_SortingLayerID: -865520427
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1406237062, guid: 112e0e321611bd247872812826639631, type: 3}
@@ -27082,6 +27083,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1748883819
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748883816}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.028266668, y: 0.00041243434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.3267398, y: 0.44412094}
+  m_EdgeRadius: 0
 --- !u!1 &1757906251
 GameObject:
   m_ObjectHideFlags: 0
@@ -27228,11 +27275,11 @@ Transform:
   m_GameObject: {fileID: 1757906251}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.069999695, y: -0.019999996, z: 0}
+  m_LocalPosition: {x: -12.5199995, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1769997789}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1769997788
 PrefabInstance:
@@ -27296,10 +27343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4526603337645721844, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1757906255}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
 --- !u!4 &1769997789 stripped
@@ -27379,6 +27423,7 @@ SceneRoots:
   - {fileID: 1356626992}
   - {fileID: 461708623}
   - {fileID: 1748883818}
+  - {fileID: 1757906255}
   - {fileID: 1769997788}
   - {fileID: 1868608478}
   - {fileID: 1174051842}
