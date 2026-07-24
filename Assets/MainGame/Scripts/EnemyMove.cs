@@ -15,7 +15,7 @@ public class EnemyMove : MonoBehaviour
     public EnemyState state = EnemyState.Following;
     
     public float speedUnitsPerSec = 0;
-    public Transform targetTransform;
+    private Transform targetTransform;
 
     public float knockbackAmountMax = 2;
 
@@ -33,6 +33,7 @@ public class EnemyMove : MonoBehaviour
     private GameObject playerRef;
 
     public float wakeUpDistance;
+    public float sleepDistance;
     
     
     // enemy hurt
@@ -63,13 +64,14 @@ public class EnemyMove : MonoBehaviour
         switch (state)
         {
             case EnemyState.Following:
-                if(!PlayerNear())
+                if(!PlayerNear(sleepDistance))
                 {
                     state = EnemyState.Sleeping;
                     
                 } else
                 {
-                                    rb.linearVelocity = moveVector * speedUnitsPerSec;
+                    // move
+                    rb.linearVelocity = moveVector * speedUnitsPerSec;
 
                 }
                 break;
@@ -91,15 +93,12 @@ public class EnemyMove : MonoBehaviour
 
                 break;
             case EnemyState.Sleeping:
-                if(PlayerNear())
+                if(PlayerNear(wakeUpDistance))
                 {
                     state = EnemyState.Following;
                 }
                 break;
         }
-        //transform.Translate(moveVector.x * speedUnitsPerSec * Time.fixedDeltaTime, moveVector.y * speedUnitsPerSec * Time.fixedDeltaTime, 0);
-        
-        
     }
     
     void FixedUpdate()
@@ -139,8 +138,8 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private bool PlayerNear()
+    private bool PlayerNear(float distance)
     {
-        return Vector3.Distance(transform.position, playerRef.transform.position) < wakeUpDistance;    
+        return Vector2.Distance(transform.position, playerRef.transform.position) < distance;    
     }
 }
