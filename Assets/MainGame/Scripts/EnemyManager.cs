@@ -50,8 +50,6 @@ public GameObject wallsLevel1;
         walls[currentLevel].SetActive(false);
 
         currentLevel ++;
-
-        
     }
 
 
