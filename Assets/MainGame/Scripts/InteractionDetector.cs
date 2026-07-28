@@ -5,21 +5,29 @@ using UnityEngine.TextCore;
 
 public class InteractionDetector : MonoBehaviour
 {
-private IInteractable interactableInRange = null;
-public GameObject InteractionIcon;
+    private IInteractable interactableInRange = null;
+    private KeyCode interactKeycode;
+    public GameObject InteractionIcon;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        interactKeycode = GameObject.Find("Keycodes").GetComponent<Keycodes>().interactKey;
+
         InteractionIcon.SetActive(false);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(interactKeycode) && interactableInRange != null)
         {
-                        interactableInRange?.Interact();
-
+            interactableInRange.Interact();
+            if(!interactableInRange.CanInteract())
+            {
+                interactableInRange = null;
+                InteractionIcon.SetActive(false);
+            }
         }
     
     }

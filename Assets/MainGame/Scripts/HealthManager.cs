@@ -16,6 +16,11 @@ public class HealthManager : MonoBehaviour
         healthUI.SetMaxHearts(currentHealth);
     }
 
+    void Update()
+    {
+        
+    }
+
     public void BePoked(int damage)
     {
         currentHealth -= damage;

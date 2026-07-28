@@ -15,6 +15,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] float charactersPerSecond;
     private int currentLineIndex;
     private float timeBetweenCharacters;
+    private KeyCode dialogueKeycode;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,12 +23,14 @@ public class Dialogue : MonoBehaviour
         timeBetweenCharacters = 1 / charactersPerSecond;
         textComponent.text = "";
         SetDialogueBoxVisibility(false);
+        dialogueKeycode = GameObject.Find("Keycodes").GetComponent<Keycodes>().dialogueKey;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(dialogueKeycode))
         {
             if(currentLineIndex == -1)
             {
