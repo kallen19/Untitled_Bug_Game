@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public enum EnemyState
@@ -9,7 +10,10 @@ public enum EnemyState
 }
 
 public class EnemyMove : MonoBehaviour
+
 {
+    [SerializeField] SpriteRenderer _spriteRenderer;
+
     public EnemyManager enemyManager;
 
     public EnemyState state = EnemyState.Following;
@@ -35,16 +39,13 @@ public class EnemyMove : MonoBehaviour
     public float wakeUpDistance;
     public float sleepDistance;
     
-    
     // enemy hurt
 
     public float maxHealth;
 
     public float health;
-    
-    
-    
 
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,7 +73,6 @@ public class EnemyMove : MonoBehaviour
                 {
                     // move
                     rb.linearVelocity = moveVector * speedUnitsPerSec;
-
                 }
                 break;
             case EnemyState.Knockback:
@@ -135,11 +135,23 @@ public class EnemyMove : MonoBehaviour
         {
             gameObject.SetActive(false);
             enemyManager.EnemyDeath.Invoke();
+            
+        } else
+        {
+                    StartCoroutine(OuchStartBleeding());
+
         }
     }
 
     private bool PlayerNear(float distance)
     {
         return Vector2.Distance(transform.position, playerRef.transform.position) < distance;    
+    }
+
+    IEnumerator OuchStartBleeding()
+    {
+        _spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.color = Color.white;
     }
 }

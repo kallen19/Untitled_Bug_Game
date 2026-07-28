@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -191,7 +192,16 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
         {
             Debug.Log("ouch");
             Knockback(other.transform);
+
+            StartCoroutine(OuchStartBleeding());
         }
+    }
+
+    IEnumerator OuchStartBleeding()
+    {
+        _spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.color = Color.white;
     }
 
     #endregion

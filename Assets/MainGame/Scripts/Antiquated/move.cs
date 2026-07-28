@@ -26,6 +26,8 @@ public class move : MonoBehaviour
     private float knockbackSpeed;
     public float knockbackFallOffRatio = 0.95f;
 
+    [SerializeField] private SpriteRenderer sr;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,7 +73,6 @@ public class move : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("ouch");
             Knockback(other.transform);
         }
     }
