@@ -51,6 +51,9 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     public float knockbackFallOffRatio = 0.95f;
     #endregion
 
+    #region health
+    public HealthManager healthManager;
+    #endregion
     
     private void Start()
     {
@@ -190,8 +193,12 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     {
         if (other.CompareTag("Enemy"))
         {
+            // find other enemy damage
+
             Debug.Log("ouch");
             Knockback(other.transform);
+
+            healthManager.BePoked(1);
 
             StartCoroutine(OuchStartBleeding());
         }

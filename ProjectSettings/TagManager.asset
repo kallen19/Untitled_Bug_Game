@@ -64,5 +64,8 @@ TagManager:
   - name: Items
     uniqueID: 1784855939
     locked: 0
+  - name: InGameUI
+    uniqueID: 2349703553
+    locked: 0
   m_RenderingLayers:
   - Default
