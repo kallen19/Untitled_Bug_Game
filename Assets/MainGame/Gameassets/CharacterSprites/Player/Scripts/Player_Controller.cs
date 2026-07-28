@@ -189,19 +189,18 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
         knockbackSpeed = knockbackMaxSpeed;
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    public void BeHurt(int damage, Transform knockbackFrom)
     {
-        if (other.CompareTag("Enemy"))
-        {
+        
             // find other enemy damage
 
             Debug.Log("ouch");
-            Knockback(other.transform);
+            Knockback(knockbackFrom);
 
-            healthManager.BePoked(1);
+            healthManager.BePoked(damage);
 
             StartCoroutine(OuchStartBleeding());
-        }
+        
     }
 
     IEnumerator OuchStartBleeding()

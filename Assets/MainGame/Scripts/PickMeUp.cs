@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickMeUp : MonoBehaviour, IInteractable
 {
     [SerializeField] SpriteRenderer sr;
-    
+    [SerializeField] HealthManager healthManager; 
     Color[] colors;
 
     int currentColor;
@@ -26,6 +26,8 @@ public class PickMeUp : MonoBehaviour, IInteractable
     {
         currentColor = currentColor == colors.Length - 1 ? 0 : currentColor + 1;
         sr.color = colors[currentColor];
+
+        healthManager.BeHealed(1, true);
     }
 
     public bool CanInteract()

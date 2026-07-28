@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d6d96392ec83c408207c6532fe67e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  healthManager: {fileID: 92476895}
   _spriteRenderer: {fileID: 204047886}
   enemyManager: {fileID: 841003580}
   state: 0
@@ -461,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d6d96392ec83c408207c6532fe67e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  healthManager: {fileID: 92476895}
   _spriteRenderer: {fileID: 204054815}
   enemyManager: {fileID: 841003580}
   state: 0
@@ -6025,6 +6027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d6d96392ec83c408207c6532fe67e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  healthManager: {fileID: 92476895}
   _spriteRenderer: {fileID: 698708972}
   enemyManager: {fileID: 841003580}
   state: 0
@@ -15687,6 +15690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   sr: {fileID: 1989877502}
+  healthManager: {fileID: 92476895}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

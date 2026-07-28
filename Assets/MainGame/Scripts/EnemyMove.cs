@@ -12,6 +12,7 @@ public enum EnemyState
 public class EnemyMove : MonoBehaviour
 
 {
+    [SerializeField] HealthManager healthManager;
     [SerializeField] SpriteRenderer _spriteRenderer;
 
     public EnemyManager enemyManager;
@@ -35,6 +36,7 @@ public class EnemyMove : MonoBehaviour
     Vector2 moveVector;
 
     private GameObject playerRef;
+    private Player_Controller playerController;
 
     public float wakeUpDistance;
     public float sleepDistance;
@@ -52,6 +54,7 @@ public class EnemyMove : MonoBehaviour
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerController = playerRef.GetComponent<Player_Controller>();
         targetTransform = playerRef.transform;
         health = maxHealth;
         state = EnemyState.Sleeping;
@@ -121,7 +124,17 @@ public class EnemyMove : MonoBehaviour
             knockbackTimer = knockbackTime;
             knockbackAmountReal = knockbackAmountMax;
             Hurt(other.GetComponent<DamageValue>().getDamageValue());
+        } else if(other.CompareTag("Player")) {
+            Debug.Log("the enemy hit me");
+        
+            // find other enemy damage
+
+            
+
+            playerController.BeHurt(1, transform);
+        
         }
+        
 
         //playerRef.GetComponent<move>().Knockback(transform);
     }
@@ -154,4 +167,6 @@ public class EnemyMove : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         _spriteRenderer.color = Color.white;
     }
+
+    
 }
