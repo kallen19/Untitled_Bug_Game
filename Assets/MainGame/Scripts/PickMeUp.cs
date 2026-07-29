@@ -6,20 +6,17 @@ public class PickMeUp : MonoBehaviour, IInteractable
 {
     [SerializeField] Item itemType;
     [SerializeField] SpriteRenderer sr;
-    [SerializeField] HealthManager healthManager; 
-    [SerializeField] InventoryUI inventoryUI;
-    Color[] colors;
+    HealthManager healthManager; 
+    InventoryUI inventoryUI;
 
-    public bool stocked {get; private set;}
-    int currentColor;
+    public int stock;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentColor = 0;
-        colors = new Color[] {Color.magenta, Color.coral, Color.teal, Color.indigo};
-        sr.color = colors[currentColor];
-        stocked = true;
+                healthManager = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+                inventoryUI = GameObject.Find("ItemContainer").GetComponent<InventoryUI>();
+
     }
 
     // Update is called once per frame
@@ -30,20 +27,24 @@ public class PickMeUp : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        currentColor = currentColor == colors.Length - 1 ? 0 : currentColor + 1;
-        sr.color = colors[currentColor];
 
         //healthManager.BeHealed(1, true);
 
         inventoryUI.PickUp(itemType);
         
         // if nmber of uses, decrease
-        stocked = false;
+        stock--;
+        
+        // if 0, disable thyself
+        if(stock <= 0)
+        {
+            sr.color = new Color(0, 0, 0, 0);
+        }
     }
 
     public bool CanInteract()
     {
-        return stocked;
+        return stock > 0;
     }
 
 }
