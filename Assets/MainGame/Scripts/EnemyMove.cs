@@ -12,8 +12,8 @@ public enum EnemyState
 public class EnemyMove : MonoBehaviour
 
 {
-    [SerializeField] HealthManager healthManager;
-    [SerializeField] SpriteRenderer _spriteRenderer;
+    HealthManager healthManager;
+    SpriteRenderer _spriteRenderer;
 
     public EnemyManager enemyManager;
 
@@ -51,6 +51,8 @@ public class EnemyMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        healthManager = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
