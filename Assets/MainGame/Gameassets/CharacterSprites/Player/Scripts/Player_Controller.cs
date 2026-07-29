@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -50,6 +51,9 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     public float knockbackFallOffRatio = 0.95f;
     #endregion
 
+    #region health
+    public HealthManager healthManager;
+    #endregion
     
     private void Start()
     {
@@ -185,13 +189,25 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
         knockbackSpeed = knockbackMaxSpeed;
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    public void BeHurt(int damage, Transform knockbackFrom)
     {
-        if (other.CompareTag("Enemy"))
-        {
+        
+            // find other enemy damage
+
             Debug.Log("ouch");
-            Knockback(other.transform);
-        }
+            Knockback(knockbackFrom);
+
+            healthManager.BePoked(damage);
+
+            StartCoroutine(OuchStartBleeding());
+        
+    }
+
+    IEnumerator OuchStartBleeding()
+    {
+        _spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.color = Color.white;
     }
 
     #endregion

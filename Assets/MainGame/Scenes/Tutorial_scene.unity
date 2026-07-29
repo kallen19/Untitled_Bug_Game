@@ -286,9 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d6d96392ec83c408207c6532fe67e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  _spriteRenderer: {fileID: 349243350}
   enemyManager: {fileID: 675868944}
   state: 0
-  speedUnitsPerSec: 1
+  speedUnitsPerSec: 0.5
   knockbackAmountMax: 5
   knockbackTime: 0.5
   knockbackFalloffRatio: 0.95
@@ -476,9 +477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d6d96392ec83c408207c6532fe67e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  _spriteRenderer: {fileID: 396246402}
   enemyManager: {fileID: 675868944}
   state: 0
-  speedUnitsPerSec: 1
+  speedUnitsPerSec: 0.5
   knockbackAmountMax: 5
   knockbackTime: 0.5
   knockbackFalloffRatio: 0.95
@@ -17617,9 +17619,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d6d96392ec83c408207c6532fe67e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  _spriteRenderer: {fileID: 2083912409}
   enemyManager: {fileID: 675868944}
   state: 0
-  speedUnitsPerSec: 1
+  speedUnitsPerSec: 0.5
   knockbackAmountMax: 5
   knockbackTime: 0.5
   knockbackFalloffRatio: 0.95
@@ -17792,6 +17795,22 @@ PrefabInstance:
     - target: {fileID: 4526603337645721844, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919307897765428012, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
+      propertyPath: _moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919307897765428012, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
+      propertyPath: knockbackMaxTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919307897765428012, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
+      propertyPath: knockbackMaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919307897765428012, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
+      propertyPath: knockbackFallOffRatio
+      value: 0.92
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public enum EnemyState
@@ -9,7 +10,11 @@ public enum EnemyState
 }
 
 public class EnemyMove : MonoBehaviour
+
 {
+    [SerializeField] HealthManager healthManager;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+
     public EnemyManager enemyManager;
 
     public EnemyState state = EnemyState.Following;
@@ -31,26 +36,25 @@ public class EnemyMove : MonoBehaviour
     Vector2 moveVector;
 
     private GameObject playerRef;
+    private Player_Controller playerController;
 
     public float wakeUpDistance;
     public float sleepDistance;
-    
     
     // enemy hurt
 
     public float maxHealth;
 
     public float health;
-    
-    
-    
 
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerController = playerRef.GetComponent<Player_Controller>();
         targetTransform = playerRef.transform;
         health = maxHealth;
         state = EnemyState.Sleeping;
@@ -72,7 +76,6 @@ public class EnemyMove : MonoBehaviour
                 {
                     // move
                     rb.linearVelocity = moveVector * speedUnitsPerSec;
-
                 }
                 break;
             case EnemyState.Knockback:
@@ -121,7 +124,17 @@ public class EnemyMove : MonoBehaviour
             knockbackTimer = knockbackTime;
             knockbackAmountReal = knockbackAmountMax;
             Hurt(other.GetComponent<DamageValue>().getDamageValue());
+        } else if(other.CompareTag("Player")) {
+            Debug.Log("the enemy hit me");
+        
+            // find other enemy damage
+
+            
+
+            playerController.BeHurt(1, transform);
+        
         }
+        
 
         //playerRef.GetComponent<move>().Knockback(transform);
     }
@@ -135,6 +148,11 @@ public class EnemyMove : MonoBehaviour
         {
             gameObject.SetActive(false);
             enemyManager.EnemyDeath.Invoke();
+            
+        } else
+        {
+                    StartCoroutine(OuchStartBleeding());
+
         }
     }
 
@@ -142,4 +160,13 @@ public class EnemyMove : MonoBehaviour
     {
         return Vector2.Distance(transform.position, playerRef.transform.position) < distance;    
     }
+
+    IEnumerator OuchStartBleeding()
+    {
+        _spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.color = Color.white;
+    }
+
+    
 }
