@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deafe8b4e9e42874d88b123a3fd04746, type: 3}
+  m_Name: LadybugNPCDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue1
+  npcName: LadyBug
+  npcPortrait: {fileID: -4013773955907039320, guid: 176c1b38b6cc26743a28c3fe68e10f2a, type: 3}
+  dialogueLines:
+  - Excuse me!
+  - 'This part of the forest had been blocked off. '
+  autoProgressLines: 0100
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05

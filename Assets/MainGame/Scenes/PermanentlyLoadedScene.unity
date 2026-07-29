@@ -582,7 +582,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 38078131}
   lines:
   - Welcome to Untitled Bug Game! Hit SPACE to continue.
-  - You have returned to your home to find it overrun with pesky FIRE ANTS. Thankfully,
+  - You have returned to your Campsite to find it overrun with pesky FIRE ANTS. Thankfully,
     you have found a STICK to fend them off with!
   - Use LEFT CLICK to swing your stick and defeat the enemies!
   - Best of luck on your journey, Orchid Mantis!
@@ -904,7 +904,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ed17589626c5b748bec5d629a8fa858, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1184217565
@@ -1440,66 +1440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6e75aa9cdfaaa46993a13e9c017961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoad
---- !u!1 &1922935132
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1922935135}
-  - component: {fileID: 1922935134}
-  - component: {fileID: 1922935133}
-  m_Layer: 0
-  m_Name: Keycodes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1922935133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922935132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6e75aa9cdfaaa46993a13e9c017961, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoad
---- !u!114 &1922935134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922935132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec143e4d473730949a3f3ffdae3f3d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Keycodes
-  interactKey: 101
-  usePotionKey: 114
-  dialogueKey: 32
---- !u!4 &1922935135
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922935132}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 93.8178, y: 391.2689, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2138466346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1524,63 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.5}
   m_Direction: 0
+--- !u!1001 &5541673617383428963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3699334439670320085, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_Name
+      value: Keycodes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 93.8178
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 391.2689
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821138149408787900, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb1cc7079d24d6c47942c6929af8e42e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1591,7 +1588,7 @@ SceneRoots:
   - {fileID: 428884959}
   - {fileID: 1830777055}
   - {fileID: 1081870945}
-  - {fileID: 1922935135}
+  - {fileID: 5541673617383428963}
   - {fileID: 40240834}
   - {fileID: 337852579}
   - {fileID: 1817136933}
