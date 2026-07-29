@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum Level
 {
@@ -25,18 +26,21 @@ public class EnemyManager : MonoBehaviour
 public GameObject wallsLevel1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        PopulateDictionaries();
+        SceneManager.sceneLoaded += OnSceneLoaded;
         EventSetup();
+        currentLevel = Level.Starter;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnSceneLoaded(Scene sceneLoaded, LoadSceneMode what)
     {
-        
+        if(sceneLoaded.name != "PermanentlyLoadedScene")
+        {
+            
+        PopulateDictionaries();
+        }
     }
-
     void CheckAreaCompletion()
     {
         foreach (GameObject enemy in enemies[currentLevel])
@@ -65,9 +69,16 @@ public GameObject wallsLevel1;
 
     void PopulateDictionaries()
     {
-        walls.Add(Level.Starter, wallsLevel1);
+        if(!walls.ContainsKey(currentLevel))
+        {
+                    walls.Add(currentLevel, GameObject.FindWithTag("DropWhenCleared"));
+                            enemies.Add(currentLevel, new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")));
 
-        enemies.Add(Level.Starter, enemiesLevel1);
+
+        }
+
+
+        Debug.Log("walls " + (walls[currentLevel] != null ? "yeh" : "no") + " enemies " + (enemies[currentLevel].Count > 0 ? "yes" : "no"));
     }
 
     

@@ -34,6 +34,12 @@ public class PickMeUp : MonoBehaviour, IInteractable
         
         // if nmber of uses, decrease
         stock--;
+        
+        // if 0, disable thyself
+        if(stock <= 0)
+        {
+            sr.color = new Color(0, 0, 0, 0);
+        }
     }
 
     public bool CanInteract()
