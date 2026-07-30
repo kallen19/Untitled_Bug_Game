@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deafe8b4e9e42874d88b123a3fd04746, type: 3}
-  m_Name: LadybugNPCDialogue
+  m_Name: NewNPCDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue1
-  npcName: LadyBug
-  npcPortrait: {fileID: -4013773955907039320, guid: 4023f90a9add65e49ad39e5fdaa2f975, type: 3}
+  npcName: Fly
+  npcPortrait: {fileID: 630741777, guid: 4f35bf62b76a78f41952f9ca7c3583ee, type: 3}
   dialogueLines:
-  - Excuse me!
-  - 'This part of the forest had been blocked off. '
-  autoProgressLines: 0100
-  autoProgressDelay: 1.5
+  - Can't talking
+  - I'm praticing for the upcoming race!
+  autoProgressLines: 
+  autoProgressDelay: 0.5
   typingSpeed: 0.05

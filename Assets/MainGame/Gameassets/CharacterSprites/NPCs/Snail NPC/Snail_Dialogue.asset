@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deafe8b4e9e42874d88b123a3fd04746, type: 3}
-  m_Name: LadybugNPCDialogue
+  m_Name: Snail_Dialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue1
-  npcName: LadyBug
-  npcPortrait: {fileID: -4013773955907039320, guid: 4023f90a9add65e49ad39e5fdaa2f975, type: 3}
+  npcName: Snail
+  npcPortrait: {fileID: -266535432, guid: eb736f85341b65a47a62b8c1cc93d5d4, type: 3}
   dialogueLines:
-  - Excuse me!
-  - 'This part of the forest had been blocked off. '
+  - Oh, I thought you were a flower!
+  - I'm waiting for the store to open if you want to chat.
   autoProgressLines: 0100
-  autoProgressDelay: 1.5
+  autoProgressDelay: 1
   typingSpeed: 0.05
