@@ -1,19 +1,41 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
-{
+{   
+    public UnityEvent died;
     public int maxHealth;
     private int currentHealth;
 
     public HealthUI healthUI;
 
+    private bool hasBeenLoaded;
+
     void Start()
     {
-        maxHealth = 5;
-        currentHealth = maxHealth;
-        healthUI.SetMaxHearts(currentHealth);
+        hasBeenLoaded = false;
+        SceneManager.sceneLoaded += Initialize;
+        died.AddListener(ResetHearts);
+    }
+
+    void Initialize(Scene loadedScene, LoadSceneMode whatIsThis)
+    {
+        if(loadedScene.buildIndex > 1) // not perma load not main menu
+        {
+            ResetHearts();
+            hasBeenLoaded = true;
+        }
+
+
+    }
+
+    void ResetHearts()
+    {
+            maxHealth = 5;
+            currentHealth = maxHealth;
+            healthUI.SetMaxHearts(currentHealth);
     }
 
     void Update()
@@ -28,7 +50,7 @@ public class HealthManager : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            // die
+            died.Invoke();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

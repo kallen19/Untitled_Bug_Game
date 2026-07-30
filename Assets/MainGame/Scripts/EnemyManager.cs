@@ -4,22 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public enum Level
-{
-    Starter,
-    Village,
-    Final
-}
-
 public class EnemyManager : MonoBehaviour
 {
     public UnityEvent EnemyDeath;
 
-    public Level currentLevel;
+    public Scene currentLevel;
 
-    public Dictionary<Level, GameObject> walls = new Dictionary<Level, GameObject>();
+    public Dictionary<Scene, GameObject> walls = new Dictionary<Scene, GameObject>();
 
-    public Dictionary<Level, List<GameObject>> enemies = new Dictionary<Level, List<GameObject>>(); 
+    public Dictionary<Scene, List<GameObject>> enemies = new Dictionary<Scene, List<GameObject>>(); 
 
     public List<GameObject> enemiesLevel1;
 
@@ -30,7 +23,6 @@ public GameObject wallsLevel1;
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         EventSetup();
-        currentLevel = Level.Starter;
     }
 
     void OnSceneLoaded(Scene sceneLoaded, LoadSceneMode what)
@@ -38,7 +30,8 @@ public GameObject wallsLevel1;
         if(sceneLoaded.name != "PermanentlyLoadedScene")
         {
             
-        PopulateDictionaries();
+            currentLevel = sceneLoaded;
+            PopulateDictionaries();
         }
     }
     void CheckAreaCompletion()
@@ -52,8 +45,6 @@ public GameObject wallsLevel1;
         }
 
         walls[currentLevel].SetActive(false);
-
-        currentLevel ++;
     }
 
 
@@ -72,13 +63,12 @@ public GameObject wallsLevel1;
         if(!walls.ContainsKey(currentLevel))
         {
                     walls.Add(currentLevel, GameObject.FindWithTag("DropWhenCleared"));
-                            enemies.Add(currentLevel, new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")));
+                    enemies.Add(currentLevel, new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")));
 
 
         }
 
-
-        Debug.Log("walls " + (walls[currentLevel] != null ? "yeh" : "no") + " enemies " + (enemies[currentLevel].Count > 0 ? "yes" : "no"));
+        Debug.Log(currentLevel.name + " walls " + (walls[currentLevel] != null ? "yeh" : "no") + " enemies " + (enemies[currentLevel].Count > 0 ? "yes" : "no"));
     }
 
     

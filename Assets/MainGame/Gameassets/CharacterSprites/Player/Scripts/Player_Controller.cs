@@ -58,6 +58,7 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     private void Start()
     {
         state = PlayerState.InControl;
+        healthManager = GameObject.Find("HealthManager").GetComponent<HealthManager>();
     }
 
     #region Tick
