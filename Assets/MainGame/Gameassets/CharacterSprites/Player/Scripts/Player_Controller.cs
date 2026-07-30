@@ -7,37 +7,37 @@ using UnityEngine.EventSystems;
 [SelectionBase]
 public class Player_Controller : MonoBehaviour
 {
-#region 
+    #region 
 
-private enum Directions {UP, DOWN, LEFT, RIGHT}
+    private enum Directions {UP, DOWN, LEFT, RIGHT}
 
-#endregion
+    #endregion
 
-#region Editor Data
-[Header("Movement Attributes")]
-[SerializeField] float _moveSpeed = 50f;
- [Header("Dependencies")]
- [SerializeField] Rigidbody2D _rb;
+    #region Editor Data
+    [Header("Movement Attributes")]
+    [SerializeField] float _moveSpeed = 50f;
+     [Header("Dependencies")]
+     [SerializeField] Rigidbody2D _rb;
 
- [SerializeField] Attack _attackHandler;
+     [SerializeField] Attack _attackHandler;
 
-[SerializeField] Animator _animator;
-[SerializeField] SpriteRenderer _spriteRenderer;
-#endregion
+    [SerializeField] Animator _animator;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    #endregion
 
-#region Internal Data
-private Vector2 _moveDir = Vector2.zero;
-private Directions _facingDirection = Directions.RIGHT;
+    #region Internal Data
+    private Vector2 _moveDir = Vector2.zero;
+    private Directions _facingDirection = Directions.RIGHT;
 
-private readonly int _animMoveRight = Animator.StringToHash("Walking_Right");
-private readonly int _animAttackRight = Animator.StringToHash("Attack_RIGHT");
-private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
-private readonly int _animMoveUp = Animator.StringToHash("Walking_Up");
-private readonly int _animAttackUp = Animator.StringToHash("Attack_UP");
-private readonly int _animIdeleUp = Animator.StringToHash("idle-Up");
-private readonly int _animMoveDown = Animator.StringToHash("Walking_Down");
-private readonly int _animAttackDown = Animator.StringToHash("Attack_Down");
-private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
+    private readonly int _animMoveRight = Animator.StringToHash("Walking_Right");
+    private readonly int _animAttackRight = Animator.StringToHash("Attack_RIGHT");
+    private readonly int _animIdeleRight = Animator.StringToHash("Idle_eight");
+    private readonly int _animMoveUp = Animator.StringToHash("Walking_Up");
+    private readonly int _animAttackUp = Animator.StringToHash("Attack_UP");
+    private readonly int _animIdeleUp = Animator.StringToHash("idle-Up");
+    private readonly int _animMoveDown = Animator.StringToHash("Walking_Down");
+    private readonly int _animAttackDown = Animator.StringToHash("Attack_Down");
+    private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     #endregion
 
     #region Jaden Adds Stuff
@@ -89,7 +89,6 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
        CalculateFacingDirection();
        UpdateAnimation(); 
     }
-
 
     private void FixedUpdate() //Fixed means anything with the physical system
     {

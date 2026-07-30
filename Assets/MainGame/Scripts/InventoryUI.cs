@@ -4,13 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Item {SapPotion, HoneyJar}
+public enum Item {SapPotion, HoneyJar, Stick}
 
 public class InventoryUI : MonoBehaviour
 {
     // gets the IMAGE given the TYPE OF ITEM
     public Image SapBottlePrefab;
     public Image HoneyJarPrefab;
+    public Image StickPrefab;
+    
     private Dictionary<Item, Image> itemPrefabLookup = new Dictionary<Item, Image>();
 
     private List<Image> images = new List<Image>(); // keeps track of current list of images shown
@@ -25,7 +27,7 @@ public class InventoryUI : MonoBehaviour
         
         itemPrefabLookup.Add(Item.SapPotion, SapBottlePrefab);
         itemPrefabLookup.Add(Item.HoneyJar, HoneyJarPrefab);
-
+        itemPrefabLookup.Add(Item.Stick, StickPrefab);
         healthManager.died.AddListener(clearPotions);
     }
 
@@ -33,7 +35,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyDown(usePotionKeycode))
         {
-            UseItem();
+            UseItem(new Item[] {Item.HoneyJar, Item.SapPotion});
         }
     }
 
@@ -86,22 +88,30 @@ public class InventoryUI : MonoBehaviour
     // use object of a type
     public void UseItem(Item itemType)
     {
-        // get first index of type
+        UseItem(new [] {itemType});
+    }
+    
+    public void UseItem(Item[] itemTypes) 
+    {
         for(int i = 0; i < items.Count; i++)
         {
-            if(items[i] == itemType)
+            foreach (Item itemType in itemTypes)
             {
-                // do the thing the item does
-                ActivateItem(itemType);
+                if(items[i] == itemType)
+                {
+                    // do the thing the item does
+                    ActivateItem(itemType);
 
-                // remove from list
-                items.RemoveAt(i);
+                    // remove from list
+                    items.RemoveAt(i);
                 
-                // update
-                UpdatePotionImages();
+                    // update
+                    UpdatePotionImages();
 
-                return;
+                    return;
+                }
             }
+            
         }
     }
 
@@ -127,4 +137,24 @@ public class InventoryUI : MonoBehaviour
             UseItem(items[index]);
         }
     }
+
+    public int CountItems(Item itemType)
+    {
+        int itemCount = 0;
+        foreach (Item itemInInv in items)
+        {
+            if (itemInInv == itemType)
+            {
+                itemCount++;
+            }
+        }
+
+        return itemCount;
+    }
+
+    public bool HasItems(Item itemType, int count)
+    {
+        return CountItems(itemType) >= count;
+    }
+    
 }
