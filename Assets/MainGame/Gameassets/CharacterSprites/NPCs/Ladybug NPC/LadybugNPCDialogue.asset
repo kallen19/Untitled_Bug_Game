@@ -16,7 +16,7 @@ MonoBehaviour:
   npcPortrait: {fileID: -4013773955907039320, guid: 4023f90a9add65e49ad39e5fdaa2f975, type: 3}
   dialogueLines:
   - Excuse me!
-  - 'This part of the forest had been blocked off. '
-  autoProgressLines: 0100
+  - 'This part of the forest has been blocked off for your safety '
+  autoProgressLines: 010100
   autoProgressDelay: 1.5
   typingSpeed: 0.05

@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Fly
   npcPortrait: {fileID: 630741777, guid: 4f35bf62b76a78f41952f9ca7c3583ee, type: 3}
   dialogueLines:
-  - Can't talking
+  - Can't talk,
   - I'm praticing for the upcoming race!
   autoProgressLines: 0100
   autoProgressDelay: 0.5
