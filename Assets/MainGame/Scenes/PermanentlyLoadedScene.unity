@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &424025088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,7 +898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f182042dc91a77f4e840aecf4a46f6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  PotionPrefab: {fileID: 6751043693125480069, guid: 2d11db0d9ac634646a94741cdaed9da4, type: 3}
+  SapBottlePrefab: {fileID: 6751043693125480069, guid: 2d11db0d9ac634646a94741cdaed9da4, type: 3}
+  HoneyJarPrefab: {fileID: 1766146423264047739, guid: 4b06294686b9bd140b1fc4f81900b360, type: 3}
   healthManager: {fileID: 337852577}
 --- !u!114 &1411932025
 MonoBehaviour:

@@ -22,7 +22,7 @@ public class HealthManager : MonoBehaviour
 
     void Initialize(Scene loadedScene, LoadSceneMode whatIsThis)
     {
-        if(loadedScene.buildIndex > 1) // not perma load not main menu
+        if(loadedScene.buildIndex > 1 && !hasBeenLoaded) // not perma load not main menu
         {
             ResetHearts();
             hasBeenLoaded = true;
