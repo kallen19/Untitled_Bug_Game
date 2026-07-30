@@ -4,12 +4,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Item {SapPotion}
+public enum Item {SapPotion, HoneyJar}
 
 public class InventoryUI : MonoBehaviour
 {
     // gets the IMAGE given the TYPE OF ITEM
-    public Image PotionPrefab;
+    public Image SapBottlePrefab;
+    public Image HoneyJarPrefab;
     private Dictionary<Item, Image> itemPrefabLookup = new Dictionary<Item, Image>();
 
     private List<Image> images = new List<Image>(); // keeps track of current list of images shown
@@ -21,7 +22,10 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         usePotionKeycode = GameObject.Find("Keycodes").GetComponent<Keycodes>().usePotionKey;
-        itemPrefabLookup.Add(Item.SapPotion, PotionPrefab);
+        
+        itemPrefabLookup.Add(Item.SapPotion, SapBottlePrefab);
+        itemPrefabLookup.Add(Item.HoneyJar, HoneyJarPrefab);
+
         healthManager.died.AddListener(clearPotions);
     }
 
@@ -108,7 +112,9 @@ public class InventoryUI : MonoBehaviour
         {
             case Item.SapPotion:
                 healthManager.BeHealed(1);
-                Debug.Log("i told healthmanager to heal itself");
+            break;
+            case Item.HoneyJar:
+                healthManager.BeHealed(1, true);
             break;
         }
     }
