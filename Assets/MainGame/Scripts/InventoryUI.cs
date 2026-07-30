@@ -22,6 +22,7 @@ public class InventoryUI : MonoBehaviour
     {
         usePotionKeycode = GameObject.Find("Keycodes").GetComponent<Keycodes>().usePotionKey;
         itemPrefabLookup.Add(Item.SapPotion, PotionPrefab);
+        healthManager.died.AddListener(clearPotions);
     }
 
     void Update()
@@ -35,6 +36,11 @@ public class InventoryUI : MonoBehaviour
     public void UpdatePotionImages()
     {
         SetPotionImages(items);
+    }
+
+    public void clearPotions()
+    {
+        SetPotionImages(new List<Item>());
     }
 
     public void SetPotionImages(List<Item> itemList)
