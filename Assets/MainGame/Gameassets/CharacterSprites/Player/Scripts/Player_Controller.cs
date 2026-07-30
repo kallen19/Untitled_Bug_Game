@@ -63,7 +63,28 @@ private readonly int _animIdeleDown = Animator.StringToHash("idle_Down");
     #region Tick
     private void Update()
     {
-       GatherInput();
+        if (PauseController.IsGamePaused)
+        {
+            switch (_facingDirection)
+            {
+                case Directions.UP:
+                    _animator.CrossFade(_animIdeleUp, 0);
+                    break;
+
+                case Directions.DOWN:
+                    _animator.CrossFade(_animIdeleDown, 0);
+                    break;
+
+                case Directions.LEFT:
+                case Directions.RIGHT:
+                    _animator.CrossFade(_animIdeleRight, 0);
+                    break;
+            }
+
+            return;
+        }
+
+        GatherInput();
        CalculateFacingDirection();
        UpdateAnimation(); 
     }
