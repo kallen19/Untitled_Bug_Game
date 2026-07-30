@@ -17,6 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - Can't talking
   - I'm praticing for the upcoming race!
-  autoProgressLines: 
+  autoProgressLines: 0100
   autoProgressDelay: 0.5
   typingSpeed: 0.05
