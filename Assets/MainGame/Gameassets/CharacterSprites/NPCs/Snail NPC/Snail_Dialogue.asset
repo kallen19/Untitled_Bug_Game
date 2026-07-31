@@ -17,6 +17,17 @@ MonoBehaviour:
   dialogueLines:
   - Oh, I thought you were a flower!
   - I'm waiting for the store to open if you want to chat.
-  autoProgressLines: 0100
-  autoProgressDelay: 1
+  - Just general items, like food, medicine, and more!
+  - 'From what we know, the forest is starting to wither away. '
+  - Red ants? I haven't encountered any.
+  autoProgressLines: 0100000000
+  endDialogueLines: 0000010101
+  autoProgressDelay: 1.5
   typingSpeed: 0.05
+  choices:
+  - dialogueIndex: 1
+    choices:
+    - What's in the town store?
+    - What's going on with the forest?
+    - Why are red ants attacking people?
+    nextDialogueIndex: 020000000300000004000000
