@@ -17546,6 +17546,10 @@ PrefabInstance:
       propertyPath: isAttacking
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8025806580857745921, guid: 9fad605b086a9ea4b856abece7a8c11f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -16,6 +16,13 @@ MonoBehaviour:
   npcPortrait: {fileID: 0}
   dialogueLines:
   - '*Crying*'
-  autoProgressLines: 
+  - My daughter Renee is missing!!!
+  autoProgressLines: 0100
+  endDialogueLines: 0001
   autoProgressDelay: 1
   typingSpeed: 0.05
+  choices:
+  - dialogueIndex: 0
+    choices:
+    - Why you crying?
+    nextDialogueIndex: 01000000

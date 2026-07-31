@@ -17,12 +17,14 @@ MonoBehaviour:
   dialogueLines:
   - I'm waiting for the store to open if you want to chat.
   - 'From what we know, the forest is starting to wither away. '
-  autoProgressLines: 0000
-  endDialogueLines: 0001
+  - It just has general stuff like food, medicine, and more!
+  autoProgressLines: 010000
+  endDialogueLines: 000101
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   choices:
   - dialogueIndex: 0
     choices:
     - What's going on with the forest?
-    nextDialogueIndex: 01000000
+    - What's in the store?
+    nextDialogueIndex: 0100000002000000
