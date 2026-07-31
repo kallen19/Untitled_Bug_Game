@@ -21,12 +21,4 @@ MonoBehaviour:
   endDialogueLines: 0001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
-  choices:
-  - dialogueIndex: 0
-    choices:
-    - Hello
-    nextDialogueIndex: 01000000
-  - dialogueIndex: 1
-    choices:
-    - Understood
-    nextDialogueIndex: 
+  choices: []

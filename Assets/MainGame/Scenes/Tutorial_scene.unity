@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   itemType: 2
   sr: {fileID: 7584410}
-  stock: 3
+  stock: 1
 --- !u!61 &7584409
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -600,17 +600,25 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 461301511}
+    - target: {fileID: 80220130666122801, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80220130666122801, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
+      propertyPath: speedUnitsPerSec
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1246585202778718905, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_Name
       value: ant (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.468
+      value: 8.468
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.505
+      value: -0.495
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11881,6 +11889,7 @@ GameObject:
   - component: {fileID: 1375478538}
   - component: {fileID: 1375478537}
   - component: {fileID: 1375478540}
+  - component: {fileID: 1375478541}
   m_Layer: 0
   m_Name: campfire
   m_TagString: Untagged
@@ -12023,6 +12032,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6965325, y: 0.37833345}
   m_EdgeRadius: 0
+--- !u!114 &1375478541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375478536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45c566513d874e44bf8988895ddb515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPC
+  dialogueData: {fileID: 11400000, guid: 119e2e7f7d4a1d746971901013212ca6, type: 2}
 --- !u!1 &1424680130
 GameObject:
   m_ObjectHideFlags: 0
@@ -12406,17 +12428,25 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 1638254411}
+    - target: {fileID: 80220130666122801, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80220130666122801, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
+      propertyPath: speedUnitsPerSec
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1246585202778718905, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_Name
       value: ant (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.532
+      value: 6.532
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.478
+      value: 0.522
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17607,17 +17637,25 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 1298025047298405308}
+    - target: {fileID: 80220130666122801, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 80220130666122801, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
+      propertyPath: speedUnitsPerSec
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1246585202778718905, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_Name
       value: ant
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.524
+      value: 3.524
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.478
+      value: -0.522
       objectReference: {fileID: 0}
     - target: {fileID: 3456768729182934206, guid: 95c751bdfc20b76448baa4d158747198, type: 3}
       propertyPath: m_LocalPosition.z

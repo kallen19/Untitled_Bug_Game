@@ -33,7 +33,7 @@ public class Baller : MonoBehaviour
 
     void Update()
     {
-        return;
+        
         if (currentSpeed > cutoff)
         {
             rb.linearVelocity = knockbackDirection * currentSpeed;
@@ -50,17 +50,18 @@ public class Baller : MonoBehaviour
         if (other.CompareTag("PlayerAttack"))
         {
             knockbackDirection = (transform.position - playerRef.transform.position).normalized;
-            //currentSpeed = initialSpeed;
+
             rb.AddForce(knockbackDirection * initialSpeed, ForceMode2D.Impulse);
-        } 
+            currentSpeed = rb.linearVelocity.magnitude;
+        }
         else if (other.CompareTag("Hole"))
         {
             //Instantiate(prize, other.transform.position, Quaternion.identity);
             GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 0f);
-            
+
             chestScript.FillChest(prize);
             Debug.Log("chest filled with " + prize.name);
-            
+
             gameObject.SetActive(false);
         }
     }

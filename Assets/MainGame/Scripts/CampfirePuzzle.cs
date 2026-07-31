@@ -21,18 +21,28 @@ public class CampfirePuzzle : MonoBehaviour, IInteractable
     
     public void Interact()
     {
-        sr.sprite = litSprite;
-        for (int i = 0; i < sticksRequired; i++)
+        if (inventory.HasItems(Item.Stick, sticksRequired))
         {
-            inventory.UseItem(Item.Stick);
+            sr.sprite = litSprite;
+            for (int i = 0; i < sticksRequired; i++)
+            {
+                inventory.UseItem(Item.Stick);
+            }
+            lit = true;
+
+            healthManager.BeHealed(2, true);
+        } else if (inventory.HasItems(Item.Stick, 1))
+        {
+            // more sticks!
+
+        } else
+        {
+            // get sticks!
         }
-        lit = true;
-        
-        healthManager.BeHealed(2, true);
     }
 
     public bool CanInteract()
     {
-        return !lit && inventory.HasItems(Item.Stick, sticksRequired);
+        return !lit;
     }
 }
