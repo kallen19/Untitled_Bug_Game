@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Item {SapPotion, HoneyJar, Stick}
+public enum Item {SapPotion, HoneyJar, Stick, DamageBoost}
 
 public class InventoryUI : MonoBehaviour
 {
@@ -20,6 +20,8 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] private HealthManager healthManager;
     private KeyCode usePotionKeycode;
+
+    //private Player_Controller pc;
     
     void Start()
     {
@@ -29,6 +31,9 @@ public class InventoryUI : MonoBehaviour
         itemPrefabLookup.Add(Item.HoneyJar, HoneyJarPrefab);
         itemPrefabLookup.Add(Item.Stick, StickPrefab);
         healthManager.died.AddListener(clearPotions);
+        
+        //pc = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Controller>();
+        
     }
 
     void Update()
@@ -72,6 +77,12 @@ public class InventoryUI : MonoBehaviour
 
     public void PickUp(Item item)
     {
+        if (item == Item.DamageBoost)
+        {
+            healthManager.increaseDamage();
+            return;
+        }
+        
         items.Add(item);
         UpdatePotionImages();
     }

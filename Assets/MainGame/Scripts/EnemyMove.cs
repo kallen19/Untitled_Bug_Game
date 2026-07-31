@@ -125,7 +125,9 @@ public class EnemyMove : MonoBehaviour
             state = EnemyState.Knockback;
             knockbackTimer = knockbackTime;
             knockbackAmountReal = knockbackAmountMax;
-            Hurt(other.GetComponent<DamageValue>().getDamageValue());
+            Hurt(healthManager.damage);
+            
+            
         } else if(other.CompareTag("Player")) {
             Debug.Log("the enemy hit me");
         

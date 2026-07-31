@@ -7,11 +7,16 @@ public class CampfirePuzzle : MonoBehaviour, IInteractable
     public Sprite litSprite;
     private bool lit;
     public int sticksRequired;
+
+    public HealthManager healthManager;
+    
     public void Start()
     {
         inventory = GameObject.Find("ItemContainer").GetComponent<InventoryUI>();
         sr = GetComponent<SpriteRenderer>();
         lit = false;
+        
+        healthManager = GameObject.Find("HealthManager").GetComponent<HealthManager>();
     }
     
     public void Interact()
@@ -22,6 +27,8 @@ public class CampfirePuzzle : MonoBehaviour, IInteractable
             inventory.UseItem(Item.Stick);
         }
         lit = true;
+        
+        healthManager.BeHealed(2, true);
     }
 
     public bool CanInteract()
