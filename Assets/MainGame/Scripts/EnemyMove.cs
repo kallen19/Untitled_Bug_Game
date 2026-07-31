@@ -47,7 +47,9 @@ public class EnemyMove : MonoBehaviour
 
     public float health;
 
-    
+    [SerializeField] Animator _animator;
+    private readonly int _animMoveDown = Animator.StringToHash("AntWalking_Down");
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,6 +62,7 @@ public class EnemyMove : MonoBehaviour
         targetTransform = playerRef.transform;
         health = maxHealth;
         state = EnemyState.Sleeping;
+	_animator.CrossFade(_animMoveDown, 0);
     }
 
     // Update is called once per frame
