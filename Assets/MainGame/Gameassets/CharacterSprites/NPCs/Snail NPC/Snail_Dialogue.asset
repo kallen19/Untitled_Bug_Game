@@ -15,19 +15,14 @@ MonoBehaviour:
   npcName: Snail
   npcPortrait: {fileID: -266535432, guid: eb736f85341b65a47a62b8c1cc93d5d4, type: 3}
   dialogueLines:
-  - Oh, I thought you were a flower!
   - I'm waiting for the store to open if you want to chat.
-  - Just general items, like food, medicine, and more!
   - 'From what we know, the forest is starting to wither away. '
-  - Red ants? I haven't encountered any.
-  autoProgressLines: 0100000000
-  endDialogueLines: 0000010101
+  autoProgressLines: 0000
+  endDialogueLines: 0001
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   choices:
-  - dialogueIndex: 1
+  - dialogueIndex: 0
     choices:
-    - What's in the town store?
     - What's going on with the forest?
-    - Why are red ants attacking people?
-    nextDialogueIndex: 020000000300000004000000
+    nextDialogueIndex: 01000000
