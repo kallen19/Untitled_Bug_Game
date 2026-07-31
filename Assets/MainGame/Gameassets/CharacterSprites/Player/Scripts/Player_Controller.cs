@@ -54,6 +54,7 @@ public class Player_Controller : MonoBehaviour
     #region health
     public HealthManager healthManager;
     #endregion
+
     
     private void Start()
     {

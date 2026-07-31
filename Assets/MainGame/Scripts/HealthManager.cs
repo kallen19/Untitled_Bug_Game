@@ -12,12 +12,20 @@ public class HealthManager : MonoBehaviour
     public HealthUI healthUI;
 
     private bool hasBeenLoaded;
+    
+    public int damage;
 
     void Start()
     {
         hasBeenLoaded = false;
         SceneManager.sceneLoaded += Initialize;
         died.AddListener(ResetHearts);
+        damage = 1;
+    }
+    
+    public void increaseDamage()
+    {
+        damage++;
     }
 
     void Initialize(Scene loadedScene, LoadSceneMode whatIsThis)
