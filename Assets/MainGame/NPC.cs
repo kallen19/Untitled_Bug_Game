@@ -53,6 +53,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     void NextLine()
     {
+        Debug.Log("NEXT LINE");
         if (isTyping)
         {
             StopAllCoroutines();
@@ -60,7 +61,7 @@ public class NPC : MonoBehaviour, IInteractable
             isTyping = false;
         }
         Debug.Log(dialogueData.endDialogueLines.Length);
-        Debug.Log(dialogueIndex);
+        Debug.Log("Diag idx: " + dialogueIndex);
         Debug.Log(dialogueData.endDialogueLines[dialogueIndex]);
 
 
@@ -113,7 +114,10 @@ public class NPC : MonoBehaviour, IInteractable
         {
             yield return new WaitForSeconds(dialogueData.autoProgressDelay);
             NextLine();
-        }
+        } else {
+            yield return new WaitForSeconds(dialogueData.autoProgressDelay);
+	    EndDialogue();
+	}
     }
 
     void DisplayChoices(DialogueChoice choice)

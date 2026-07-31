@@ -23,5 +23,10 @@ MonoBehaviour:
   typingSpeed: 0.05
   choices:
   - dialogueIndex: 0
-    choices: []
+    choices:
+    - Hello
+    nextDialogueIndex: 01000000
+  - dialogueIndex: 1
+    choices:
+    - Understood
     nextDialogueIndex: 
