@@ -17,6 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - Excuse me!
   - 'This part of the forest has been blocked off for your safety '
-  autoProgressLines: 010100
+  autoProgressLines: 0100
   autoProgressDelay: 1.5
   typingSpeed: 0.05
