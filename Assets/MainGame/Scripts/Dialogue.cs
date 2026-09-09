@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 using Unity.VisualScripting;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UIElements;
 
 public class Dialogue : MonoBehaviour

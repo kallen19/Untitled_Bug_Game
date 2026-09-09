@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CampfirePuzzle : MonoBehaviour, IInteractable
@@ -33,12 +34,27 @@ public class CampfirePuzzle : MonoBehaviour, IInteractable
             healthManager.BeHealed(2, true);
         } else if (inventory.HasItems(Item.Stick, 1))
         {
-            // more sticks!
+            RaiseErrorMessage("You need " + sticksRequired + " sticks to light the campfire! Keep collecting!");
 
         } else
         {
-            // get sticks!
+            RaiseErrorMessage("You need " + sticksRequired + " sticks to light the campfire! Start collecting!");
         }
+    }
+    
+    public GameObject dialoguePanel;
+    public TMP_Text dialogueText;
+
+    public void Close()
+    {
+        dialoguePanel.SetActive(false);
+        Debug.Log("no");
+    }
+
+    void RaiseErrorMessage(string message)
+    {
+        dialoguePanel.SetActive(true);
+        dialogueText.text = message;
     }
 
     public bool CanInteract()
