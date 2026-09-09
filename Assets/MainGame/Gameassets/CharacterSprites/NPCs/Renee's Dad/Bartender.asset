@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deafe8b4e9e42874d88b123a3fd04746, type: 3}
+  m_Name: Bartender
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue1
+  npcName: Bartender
+  npcPortrait: {fileID: 0}
+  dialogueLines:
+  - 'Welcome to the Sap House. How may I help you? '
+  - Here you go flower.
+  - That's the owner of the Sap House. His daughter is missing. Maybe you can convinence
+    him to stop drinking our supplying.
+  - There's a bunch of ants attacking other insects. They don't seem to be from around
+    these parts.
+  autoProgressLines: 01000000
+  endDialogueLines: 00010101
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  choices:
+  - dialogueIndex: 0
+    choices:
+    - Health Potion +1
+    - Who's the sad guy over there?
+    - What's going on in the forest outside of town?
+    nextDialogueIndex: 010000000200000003000000
