@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deafe8b4e9e42874d88b123a3fd04746, type: 3}
-  m_Name: NewNPCDialogue
+  m_Name: Renee_V2
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue1
-  npcName: Fly
-  npcPortrait: {fileID: 630741777, guid: 4f35bf62b76a78f41952f9ca7c3583ee, type: 3}
+  npcName: Renee
+  npcPortrait: {fileID: 4932032714245698664, guid: 330da25248ed7a44f9cf7a98e873dc41, type: 3}
   dialogueLines:
-  - Can't talk,
-  - I'm praticing for the upcoming race!
+  - Thank you for saving me!
+  - That's the end of the Demo! Thank you for playing <3
   autoProgressLines: 0100
   endDialogueLines: 0001
-  autoProgressDelay: 0.5
+  autoProgressDelay: 1.5
   typingSpeed: 0.05
   choices: []
