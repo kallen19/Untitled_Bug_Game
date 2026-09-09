@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Notes : MonoBehaviour, IInteractable
 {
@@ -8,6 +10,9 @@ public class Notes : MonoBehaviour, IInteractable
     [SerializeField] private GameObject noteCanvas;
     [SerializeField] private SpriteRenderer closedNotes;
 
+    [SerializeField] private GameObject noteButton;
+    // [SerializeField] private GameObject objToClose;
+
     void Start()
     {
         NotesID ??= GlobalHelper.GenerateUniqueID(gameObject);
@@ -15,6 +20,21 @@ public class Notes : MonoBehaviour, IInteractable
         closedNotes.enabled = true;
         noteCanvas.SetActive(false);
     }
+
+    //void Update()
+    //{
+    //    if (!noteCanvas.activeInHierarchy)
+    //    {
+    //        Debug.Log("closed");
+    //        objToClose.SetActive(false);
+    //    } else
+    //    {
+    //        objToClose.SetActive(true);
+
+    //        Debug.Log("opened");
+    //    }
+
+    //}
 
     public bool CanInteract()
     {
@@ -33,6 +53,11 @@ public class Notes : MonoBehaviour, IInteractable
         SetOpened(true);
     }
 
+    public void CloseNote()
+    {
+        noteCanvas.SetActive(false);
+    }
+
     public void SetOpened(bool opened)
     {
         IsOpened = opened;
@@ -41,6 +66,10 @@ public class Notes : MonoBehaviour, IInteractable
         {
             closedNotes.enabled = !opened;
             noteCanvas.SetActive(true);
+        }
+        else
+        {
+            noteCanvas.SetActive(false);
         }
     }
 }
